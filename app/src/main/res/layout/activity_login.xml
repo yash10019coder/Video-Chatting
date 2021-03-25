@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="@color/purple_200"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:background="@drawable/textbox"
+                android:drawableStart="@drawable/ic_gmail"
+                android:drawableLeft="@drawable/ic_gmail"
+                android:drawablePadding="15dp"
+                android:ems="10"
+                android:hint="@string/enter_your_email"
+                android:inputType="textAutoComplete|textEmailAddress"
+                android:paddingStart="15dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:textColor="@color/white"
+                android:textColorHighlight="#746D6D"
+                android:textColorHint="#FFFFFF"
+                android:textColorLink="#FFFFFF"
+                android:textIsSelectable="true"
+                app:layout_constraintBottom_toTopOf="@+id/etPassword"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toTopOf="@+id/guideline4" />
+
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/textbox"
+                android:drawableLeft="@drawable/ic_cloud"
+                android:drawablePadding="15dp"
+                android:ems="10"
+                android:hint="@string/enter_your_password"
+                android:inputType="textPassword|textAutoComplete"
+                android:paddingLeft="15dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:textColor="@color/white"
+                android:textColorHighlight="#746D6D"
+                android:textColorHint="#FFFFFF"
+                android:textColorLink="#FFFFFF"
+                android:textIsSelectable="false"
+                app:layout_constraintBottom_toTopOf="@+id/btLogin"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/etEmail"
+                android:autofillHints=""
+                android:paddingStart="15dp"
+                android:drawableStart="@drawable/ic_cloud" />
+
+            <Button
+                android:id="@+id/btLogin"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_style"
+                android:padding="0dp"
+                android:text="@string/login"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/btSignup"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+
+            <Button
+                android:id="@+id/btSignup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_style"
+                android:text="@string/sign_up"
+                android:textColor="@color/white"
+                android:textColorHighlight="@color/white"
+                android:textColorHint="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/btLogin" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="clip_horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/guideline5"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/btSignup">
+
+                <ImageView
+                    android:id="@+id/ivGoogle"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_google_symbol"
+                    android:layout_marginEnd="20dp"
+                    android:contentDescription="@string/sign_up_with_google" />
+
+                <ImageView
+                    android:id="@+id/ivFacebook"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_facebook"
+                    android:layout_marginStart="20dp"
+                    android:contentDescription="@string/sign_up_with_facebook" />
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".1" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".9" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent=".3" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent=".93" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

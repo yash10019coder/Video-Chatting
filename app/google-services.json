@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "110032858925",
+    "project_id": "video-chatting-38864",
+    "storage_bucket": "video-chatting-38864.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:110032858925:android:4f1c344c43d5c29742ada4",
+        "android_client_info": {
+          "package_name": "com.yash10019coder.videochatting"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "110032858925-6iqkfchvsdr75hfdu9frovhnu9sg22v8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCa8lv7H54VEQfLJ4cVibs6MfKI3J8PeRI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "110032858925-6iqkfchvsdr75hfdu9frovhnu9sg22v8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

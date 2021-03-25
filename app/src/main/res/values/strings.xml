@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Video Chatting</string>
+    <string name="enter_your_email">Enter Your Email</string>
+    <string name="enter_your_password">Enter Your Password</string>
+    <string name="login">LOGIN</string>
+    <string name="sign_up">Sign up</string>
+    <string name="sign_up_with_facebook">sign up with facebook</string>
+    <string name="sign_up_with_google">sign up with google</string>
+    <string name="enter_your_name">Enter Your Name</string>
+</resources>
