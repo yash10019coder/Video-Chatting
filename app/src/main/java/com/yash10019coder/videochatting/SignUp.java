@@ -16,7 +16,7 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding=ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        binding.btLogin.setOnClickListener(new View.OnClickListener() {
+        binding.btlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SignUp.this,LoginActivity.class));
