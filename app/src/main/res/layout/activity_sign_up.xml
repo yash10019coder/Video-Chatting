@@ -95,14 +95,14 @@
                 android:textColorHint="#FFFFFF"
                 android:textColorLink="#FFFFFF"
                 android:textIsSelectable="false"
-                app:layout_constraintBottom_toTopOf="@+id/btSignUp"
+                app:layout_constraintBottom_toTopOf="@+id/btsignup"
                 app:layout_constraintEnd_toStartOf="@+id/guideline3"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
                 app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
             <Button
-                android:id="@+id/btSignUp"
+                android:id="@+id/btsignup"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_style"
@@ -130,7 +130,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/guideline3"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toBottomOf="@+id/btSignUp" />
+                app:layout_constraintTop_toBottomOf="@+id/btsignup" />
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
@@ -193,7 +193,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-
                 app:layout_constraintGuide_percent=".93" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
