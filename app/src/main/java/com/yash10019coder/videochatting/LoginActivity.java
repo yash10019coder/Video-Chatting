@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
         if (currentUser != null && account!=null) {
             progressDialog.show();
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
             progressDialog.dismiss();
         }
     }
@@ -101,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
 //                                    Log.d(TAG, "signInWithEmail:success");
                                     FirebaseUser user = mAuth.getCurrentUser();
 //                                    updateUI(user);
-                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                    startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
                                 } else {
                                     // If sign in fails, display a message to the user.
 //                                    Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -165,6 +165,8 @@ public class LoginActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
                                     Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                                    startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+                                    Toast.makeText(LoginActivity.this, "Sign in with google", Toast.LENGTH_SHORT).show();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -172,8 +174,6 @@ public class LoginActivity extends AppCompatActivity {
                                     Log.w(TAG, "Error adding document", e);
                                 }
                             });
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                            Toast.makeText(LoginActivity.this, "Sign in with google", Toast.LENGTH_SHORT).show();
 //                            updateUI(user);
 //                            updateUI(user);
                         } else {

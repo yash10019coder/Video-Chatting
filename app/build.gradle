@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.yash10019coder.videochatting"
-        minSdkVersion 16
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         multiDexEnabled true
@@ -43,6 +43,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
     implementation 'com.google.firebase:firebase-firestore'
+    implementation ('org.jitsi.react:jitsi-meet-sdk:2.+') { transitive = true }
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

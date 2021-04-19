@@ -48,7 +48,7 @@ public class SignUp extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null ) {
 //            progressDialog.show();
-            startActivity(new Intent(SignUp.this, MainActivity.class));
+            startActivity(new Intent(SignUp.this, DashboardActivity.class));
 //            progressDialog.dismiss();
         }
     }
@@ -85,6 +85,8 @@ public class SignUp extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
                                     Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                                    startActivity(new Intent(SignUp.this, DashboardActivity.class));
+                                    Toast.makeText(SignUp.this, "Your Account is created.", Toast.LENGTH_SHORT).show();
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
@@ -92,8 +94,6 @@ public class SignUp extends AppCompatActivity {
                                     Log.w(TAG, "Error adding document", e);
                                 }
                             });
-                            startActivity(new Intent(SignUp.this, MainActivity.class));
-                            Toast.makeText(SignUp.this, "Your Account is created.", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(SignUp.this, task.getException().getLocalizedMessage(),
                                     Toast.LENGTH_SHORT).show();
