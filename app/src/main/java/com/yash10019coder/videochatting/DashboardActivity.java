@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.yash10019coder.videochatting.databinding.ActivityDashboardBinding;
 
 import org.jitsi.meet.sdk.JitsiMeet;
@@ -21,6 +24,11 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding=ActivityDashboardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         URL serverURL;
         try {
             serverURL = new URL("https://meet.jit.si");

@@ -20,7 +20,22 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/adView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                app:adSize="BANNER"
+                app:adUnitId="ca-app-pub-3469166927478758/4896343466"
+                app:layout_constraintBottom_toTopOf="@+id/guideline4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.512"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.221"></com.google.android.gms.ads.AdView>
+<!--         official   ca-app-pub-3469166927478758/4896343466-->
+<!--         test       ca-app-pub-3940256099942544/6300978111-->
             <EditText
                 android:id="@+id/etEmail"
                 android:layout_width="0dp"
@@ -52,12 +67,15 @@
                 android:id="@+id/etPassword"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:autofillHints=""
                 android:background="@drawable/textbox"
+                android:drawableStart="@drawable/ic_cloud"
                 android:drawableLeft="@drawable/ic_cloud"
                 android:drawablePadding="15dp"
                 android:ems="10"
                 android:hint="@string/enter_your_password"
                 android:inputType="textPassword|textAutoComplete"
+                android:paddingStart="15dp"
                 android:paddingLeft="15dp"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp"
@@ -70,10 +88,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/guideline3"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
-                app:layout_constraintTop_toBottomOf="@+id/etEmail"
-                android:autofillHints=""
-                android:paddingStart="15dp"
-                android:drawableStart="@drawable/ic_cloud" />
+                app:layout_constraintTop_toBottomOf="@+id/etEmail" />
 
             <Button
                 android:id="@+id/btLogin"
@@ -110,8 +125,8 @@
                 android:id="@+id/linearLayout3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:gravity="clip_horizontal"
+                android:orientation="horizontal"
                 app:layout_constraintBottom_toTopOf="@+id/guideline5"
                 app:layout_constraintEnd_toStartOf="@+id/guideline3"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
@@ -121,23 +136,23 @@
                     android:id="@+id/ivGoogle"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_weight="1"
+                    android:contentDescription="@string/sign_up_with_google"
                     android:padding="5dp"
-                    android:src="@drawable/ic_google_symbol"
-                    android:layout_marginEnd="20dp"
-                    android:contentDescription="@string/sign_up_with_google" />
+                    android:src="@drawable/ic_google_symbol" />
 
                 <ImageView
                     android:id="@+id/ivFacebook"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginLeft="20dp"
                     android:layout_weight="1"
+                    android:contentDescription="@string/sign_up_with_facebook"
                     android:padding="5dp"
-                    android:src="@drawable/ic_facebook"
-                    android:layout_marginStart="20dp"
-                    android:contentDescription="@string/sign_up_with_facebook" />
+                    android:src="@drawable/ic_facebook" />
             </LinearLayout>
 
             <androidx.constraintlayout.widget.Guideline
@@ -167,6 +182,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent=".93" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

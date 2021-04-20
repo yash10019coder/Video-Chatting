@@ -2,13 +2,18 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.yash10019coder.videochatting">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.VideoChatting">
+        android:theme="@style/Theme.VideoChatting"
+        android:hardwareAccelerated="true"
+        >
         <activity android:name=".DashboardActivity"></activity>
         <activity android:name=".SplashScreen" />
         <activity android:name=".SignUp" />
@@ -20,6 +25,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3469166927478758~8574560564" />
+
     </application>
+
 
 </manifest>

@@ -10,6 +10,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -37,7 +40,7 @@ public class SignUp extends AppCompatActivity {
         binding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         mAuth = FirebaseAuth.getInstance();
-        db= FirebaseFirestore.getInstance();
+        db = FirebaseFirestore.getInstance();
     }
 
     @Override
@@ -46,7 +49,7 @@ public class SignUp extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
 //        progressDialog.setTitle("Logging in");
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null ) {
+        if (currentUser != null) {
 //            progressDialog.show();
             startActivity(new Intent(SignUp.this, DashboardActivity.class));
 //            progressDialog.dismiss();
@@ -76,7 +79,7 @@ public class SignUp extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
 //                        progressDialog.dismiss();
                         if (task.isSuccessful()) {
-                            users users1=new users();
+                            users users1 = new users();
                             users1.setUsername(binding.etUsername.getText().toString());
                             users1.setId(mAuth.getUid());
                             users1.setMail(email);
