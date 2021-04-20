@@ -45,10 +45,9 @@ public class LoginActivity extends AppCompatActivity {
     ActivityLoginBinding binding;
     FirebaseAuth mAuth;
     ProgressDialog progressDialog;
-    String TAG = "12kejh!@#!@";
+    String TAG = "TAG";
     private GoogleSignInClient mGoogleSignInClient;
     private FirebaseFirestore db;
-    private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,22 +68,57 @@ public class LoginActivity extends AppCompatActivity {
             public void onInitializationComplete(InitializationStatus initializationStatus) {
             }
         });
-        adView=findViewById(R.id.adView);
         AdRequest adRequest=new AdRequest.Builder().build();
-        adView.loadAd(adRequest);
-        adView.setAdListener(new AdListener() {
+        AdRequest adRequest2=new AdRequest.Builder().build();
+        binding.adView.loadAd(adRequest);
+        binding.adView.setAdListener(new AdListener() {
             @Override
             public void onAdLoaded() {
                 // Code to be executed when an ad finishes loading.
                 super.onAdLoaded();
-                Toast.makeText(LoginActivity.this, "Loaded ad", Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this, "Loaded ad 1", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onAdFailedToLoad(LoadAdError adError) {
                 // Code to be executed when an ad request fails.
                 super.onAdFailedToLoad(adError);
-                adView.loadAd(adRequest);
+                binding.adView.loadAd(adRequest);
+            }
+
+            @Override
+            public void onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+                super.onAdOpened();
+            }
+
+            @Override
+            public void onAdClicked() {
+                // Code to be executed when the user clicks on an ad.
+                super.onAdClicked();
+            }
+
+            @Override
+            public void onAdClosed() {
+                // Code to be executed when the user is about to return
+                // to the app after tapping on an ad.
+            }
+        });
+        binding.adView2.loadAd(adRequest2);
+        binding.adView2.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+                super.onAdLoaded();
+                Toast.makeText(LoginActivity.this, "Loaded ad 2", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAdFailedToLoad(LoadAdError adError) {
+                // Code to be executed when an ad request fails.
+                super.onAdFailedToLoad(adError);
+                binding.adView.loadAd(adRequest2);
             }
 
             @Override

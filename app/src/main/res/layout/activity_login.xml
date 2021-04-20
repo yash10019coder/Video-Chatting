@@ -20,6 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <!--         official   ca-app-pub-3469166927478758/4896343466-->
+            <!--         test       ca-app-pub-3940256099942544/6300978111-->
             <com.google.android.gms.ads.AdView
                 android:id="@+id/adView"
                 android:layout_width="wrap_content"
@@ -28,14 +30,28 @@
                 android:layout_centerHorizontal="true"
                 app:adSize="BANNER"
                 app:adUnitId="ca-app-pub-3469166927478758/4896343466"
-                app:layout_constraintBottom_toTopOf="@+id/guideline4"
+                app:layout_constraintBottom_toTopOf="@+id/adView2"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.512"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.221"></com.google.android.gms.ads.AdView>
-<!--         official   ca-app-pub-3469166927478758/4896343466-->
-<!--         test       ca-app-pub-3940256099942544/6300978111-->
+                app:layout_constraintVertical_bias="0.122"></com.google.android.gms.ads.AdView>
+
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/adView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                app:adSize="BANNER"
+                app:adUnitId="ca-app-pub-3469166927478758/7036573022"
+                app:layout_constraintBottom_toTopOf="@+id/etEmail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/adView"
+                app:layout_constraintVertical_bias="0.709"></com.google.android.gms.ads.AdView>
+
             <EditText
                 android:id="@+id/etEmail"
                 android:layout_width="0dp"
