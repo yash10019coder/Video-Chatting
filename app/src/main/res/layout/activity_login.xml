@@ -152,11 +152,23 @@
                     android:id="@+id/ivGoogle"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
                     android:layout_weight="1"
                     android:contentDescription="@string/sign_up_with_google"
                     android:padding="5dp"
                     android:src="@drawable/ic_google_symbol" />
 
+                <ImageView
+                    android:id="@+id/ivFacebook"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/sign_up_with_facebook"
+                    android:padding="5dp"
+                    android:src="@drawable/ic_facebook" />
             </LinearLayout>
 
             <androidx.constraintlayout.widget.Guideline
