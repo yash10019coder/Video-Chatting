@@ -33,8 +33,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.database.FirebaseDatabase;
 import com.yash10019coder.videochatting.databinding.ActivityLoginBinding;
 import com.yash10019coder.videochatting.models.users;
 
@@ -45,10 +44,9 @@ public class LoginActivity extends AppCompatActivity {
     private static final int RC_SIGN_IN = 13;
     ActivityLoginBinding binding;
     FirebaseAuth mAuth;
-    ProgressDialog progressDialog;
     String TAG = "TAG";
     private GoogleSignInClient mGoogleSignInClient;
-    private FirebaseFirestore db;
+    private FirebaseDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,13 +55,15 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         mAuth = FirebaseAuth.getInstance();
+        ProgressDialog progressDialog;
         progressDialog = new ProgressDialog(LoginActivity.this);
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-        db = FirebaseFirestore.getInstance();
+        db = FirebaseDatabase.getInstance();
+
         MobileAds.initialize(this, new OnInitializationCompleteListener() {
             @Override
             public void onInitializationComplete(InitializationStatus initializationStatus) {
@@ -146,6 +146,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
+        ProgressDialog progressDialog=new ProgressDialog(LoginActivity.this);
 //        Log.d(TAG, "onStart: login");
         // Check if user is signed in (non-null) and update UI accordingly.
         progressDialog.setTitle("Logging in");
@@ -161,6 +162,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        ProgressDialog progressDialog=new ProgressDialog(LoginActivity.this);
 //        Log.d(TAG, "onResume: login");
         progressDialog.setTitle("Login");
         progressDialog.setMessage("Logging in");
@@ -176,26 +178,28 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String email = binding.etEmail.getText().toString().trim();
                 String password = binding.etPassword.getText().toString().trim();
-                progressDialog.show();
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    progressDialog.dismiss();
-                                    // Sign in success, update UI with the signed-in user's information
+                if( !email.equals("") && !password.equals("") ) {
+                    progressDialog.show();
+                    mAuth.signInWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        progressDialog.dismiss();
+                                        // Sign in success, update UI with the signed-in user's information
 //                                    Log.d(TAG, "signInWithEmail:success");
-                                    FirebaseUser user = mAuth.getCurrentUser();
+                                        FirebaseUser user = mAuth.getCurrentUser();
 //                                    updateUI(user);
-                                    startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
-                                } else {
-                                    // If sign in fails, display a message to the user.
+                                        startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+                                    } else {
+                                        // If sign in fails, display a message to the user.
 //                                    Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                    Toast.makeText(LoginActivity.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(LoginActivity.this, "Authentication failed.",
+                                                Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                            }
-                        });
+                            });
+                }
             }
         });
         binding.ivGoogle.setOnClickListener(new View.OnClickListener() {
@@ -247,19 +251,9 @@ public class LoginActivity extends AppCompatActivity {
                             users1.setUsername(user.getDisplayName());
                             users1.setId(user.getUid());
                             users1.setMail(user.getEmail());
-                            db.collection("users").add(users1).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                @Override
-                                public void onSuccess(DocumentReference documentReference) {
-                                    Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                            db.getReference("users").child(user.getUid()).setValue(users1);
                                     startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
-                                    Toast.makeText(LoginActivity.this, "Sign in with google", Toast.LENGTH_SHORT).show();
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Log.w(TAG, "Error adding document", e);
-                                }
-                            });
+
 //                            updateUI(user);
 //                            updateUI(user);
                         } else {
