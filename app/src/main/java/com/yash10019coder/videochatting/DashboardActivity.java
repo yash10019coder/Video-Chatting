@@ -3,8 +3,11 @@ package com.yash10019coder.videochatting;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -16,6 +19,12 @@ import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.yash10019coder.videochatting.databinding.ActivityDashboardBinding;
 
 import org.jitsi.meet.sdk.JitsiMeet;
@@ -29,6 +38,31 @@ public class DashboardActivity extends AppCompatActivity {
     ActivityDashboardBinding binding;
     private InterstitialAd mInterstitialAd;
     String TAG = "TAG";
+    FirebaseAuth auth;
+    GoogleSignInClient mGoogleSignInClient;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_video_calling, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.logout) {
+            auth.signOut();
+            mGoogleSignInClient.signOut().addOnCompleteListener(this,
+                    new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+// Google Sign In failed, update UI appropriately
+                            Toast.makeText(getApplicationContext(), "Signed out of google", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+            startActivity(new Intent(DashboardActivity.this, LoginActivity.class));
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -266,6 +300,15 @@ public class DashboardActivity extends AppCompatActivity {
                 // to the app after tapping on an ad.
             }
         });
+
+        auth = FirebaseAuth.getInstance();
+        GoogleSignInOptions gso;
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
     }
 
     @Override
